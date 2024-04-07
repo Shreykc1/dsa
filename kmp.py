@@ -1,6 +1,6 @@
 def kmp(string,pattern,lps):
     if len(string) < len(pattern):
-        return "Invalid"
+        return ""
     
     i, j = 0, -1
     
@@ -9,15 +9,15 @@ def kmp(string,pattern,lps):
             i+=1
             j+=1
         else:
-            j = -1 if not lps[j] else lps[j] 
+            j = -1 if not lps[j] else lps[j]
             
             if string[i] != pattern[j+1]:
                 i+=1
+                
         if j == len(pattern)-1:
-            return f"match found at {i-j-1}"
+            return f"match found{i-j-1}"
         if i == len(string):
-            return "match not found"
-        
+            return ""      
     
           
 
@@ -35,8 +35,7 @@ def findLPS(pattern):
         else:
             lps.append(0)
         chars.add(i)
-        
-    return lps
+    return lps 
             
 
 string = "abc abcdab abcdabcdabde"

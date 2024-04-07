@@ -1,27 +1,29 @@
-
-def check(s1, s2):
+def check(s1,s2):
     for i in range(len(s1)):
         if s1[i] != s2[i]:
             return False
     return True
-
-def find(string, pattern):
-    if len(string) < len(pattern):
-        return "Match not found"
     
-    psum = sum([ord(char)-96 for char in pattern]) #pattern sum
-    csum = sum([ord(char)-96 for char in string[0 : len(pattern)]]) #string sum till pattern len
-
-    for i in range(0, len(string)-len(pattern)+1):
-        if i != 0:
-            csum = csum + ord(string[i+len(pattern)-1]) - 96
-        
+    
+    
+def find(string,pattern):
+    if len(string) < len(pattern):
+        return ""
+    
+    psum = sum([ord(char) for char in pattern])
+    csum = sum([ord(char) for char in string[0 : len(pattern)]])
+    
+    for i in range(0,len(string)-len(pattern)+1):
+        if i!=0:
+            csum = csum + ord(string[i+len(pattern)-1])
+            
         current = string[i: i+len(pattern)]
-        if csum == psum:
-            if check(current, pattern):
-                return f"Match found at index {i}"
-        csum = csum - ord(string[i]) + 96
-    return "Match not found"
+        
+        if psum == csum:
+            if check(current,pattern):
+                return f"found {i}"
+        csum = csum - ord(string[i])
+    return "match not found"
     
 
 string = "racecar"

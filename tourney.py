@@ -1,8 +1,7 @@
 import random
 
 def select(arr):
-    opps = {} 
-    
+    opps = {}
     while len(arr) > 1:
         for i in range(len(arr)//2):
             if arr[i] > arr[i+1]:
@@ -18,14 +17,14 @@ def select(arr):
                     opps[arr[i+1]] = [arr[i]]
                 del arr[i]
                 
-                               
-            i+=1 
-       
+            i+=1
+        print(arr)
     
     winner = arr[0]
-    result = float('-inf') # float('inf') for smallest
+    result = float('-inf')
+    
     for opp in opps[winner]:
-        result = max(opp, result) # min(opp, result) for smallest
+        result = max(opp,result)
     return result
 
 
